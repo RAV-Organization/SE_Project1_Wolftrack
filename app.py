@@ -10,11 +10,11 @@ The above copyright notice and this permission notice shall be included in all c
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 '''
 import os
-from flask import Flask, request, render_template, make_response, redirect,url_for,send_from_directory, session, flash
+from flask import Flask, request, render_template, make_response, redirect, url_for, send_from_directory, session, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField, SelectField 
+from wtforms import StringField, PasswordField, SubmitField, SelectField
 from wtforms.validators import InputRequired, Length, ValidationError, DataRequired, EqualTo
 from werkzeug.utils import redirect
 from Controller.send_email import *
@@ -23,10 +23,10 @@ from Controller.ResumeParser import *
 from Utils.jobprofileutils import *
 import os
 from flask import send_file, current_app as app
-from Controller.chat_gpt_pipeline import pdf_to_text,chatgpt
+from Controller.chat_gpt_pipeline import pdf_to_text, chatgpt
 from Controller.data import data, upcoming_events, profile
 from Controller.send_email import *
-from dbutils import add_job, create_tables, add_client, delete_job_application_by_company ,find_user, get_job_applications, get_job_applications_by_status, update_job_application_by_id
+from dbutils import add_job, create_tables, add_client, delete_job_application_by_company, find_user, get_job_applications, get_job_applications_by_status, update_job_application_by_id
 from login_utils import login_user
 import requests
 
@@ -57,12 +57,15 @@ create_tables(database)
 #     password = db.Column(db.String(80), nullable=False)
 #     usertype = db.Column(db.String(20), nullable=False)
 
+
 class RegisterForm(FlaskForm):
     username = StringField(render_kw={"placeholder": "Username"})
     name = StringField(render_kw={"placeholder": "Name"})
     password = PasswordField(render_kw={"placeholder": "Password"})
-    usertype = SelectField(render_kw={"placeholder": "Usertype"}, choices=[('admin', 'Admin'), ('student', 'Student')])
+    usertype = SelectField(render_kw={"placeholder": "Usertype"}, choices=[
+                           ('admin', 'Admin'), ('student', 'Student')])
     submit = SubmitField('Register')
+
 
 class LoginForm(FlaskForm):
     username = StringField(validators=[
@@ -76,60 +79,65 @@ class LoginForm(FlaskForm):
 
     submit = SubmitField('Login')
 
+
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/logout',methods=['GET', 'POST'])
+
+@app.route('/logout', methods=['GET', 'POST'])
 def logout():
     session['type'] = ''
     session['user_id'] = None
     return redirect(url_for('login'))
 
 
-@app.route('/login',methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
-    form = LoginForm() 
+    form = LoginForm()
     if form.validate_on_submit():
-        user = find_user(str(form.username.data),database)
+        user = find_user(str(form.username.data), database)
         if user:
             if bcrypt.check_password_hash(user[3], form.password.data):
-                login_user(app,user)
+                login_user(app, user)
                 if user[4] == 'admin':
                     return redirect(url_for('admin', data=user[2]))
                 elif user[4] == 'student':
                     return redirect(url_for('student', data=user[2]))
                 else:
                     pass
-    return render_template('login.html',form = form)
+    return render_template('login.html', form=form)
 
-@app.route('/signup',methods=['GET', 'POST'])
+
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
     form = RegisterForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data)
-        new_client = [form.name.data,form.username.data, hashed_password, form.usertype.data]
-        add_client(new_client,database)
+        new_client = [form.name.data, form.username.data,
+                      hashed_password, form.usertype.data]
+        add_client(new_client, database)
         return redirect(url_for('login'))
 
-    return render_template('signup.html',form = RegisterForm())
+    return render_template('signup.html', form=RegisterForm())
 
-@app.route('/admin',methods=['GET', 'POST'])
+
+@app.route('/admin', methods=['GET', 'POST'])
 def admin():
     data_received = request.args.get('data')
-    user = find_user(str(data_received),database)
-    ##Add query
+    user = find_user(str(data_received), database)
+    # Add query
     return render_template('admin_landing.html', user=user)
 
 
-@app.route('/student',methods=['GET', 'POST'])
+@app.route('/student', methods=['GET', 'POST'])
 def student():
     data_received = request.args.get('data')
-    user = find_user(str(data_received),database)
-
+    user = find_user(str(data_received), database)
 
     jobapplications = get_job_applications(database)
     return render_template('home.html', user=user, jobapplications=jobapplications)
+
 
 @app.route('/student/<status>', methods=['GET', 'POST'])
 def get_job_application_status(status):
@@ -144,18 +152,20 @@ def get_job_application_status(status):
     return render_template('home.html', user=user, jobapplications=job_applications)
 
 
-@app.route("/admin/send_email", methods=['GET','POST'])
+@app.route("/admin/send_email", methods=['GET', 'POST'])
 def send_email():
     comments = request.form['comment']
     email = 'elliotanderson506@gmail.com'
-    s_comment_email(email,comments)
-    return make_response(render_template('admin_landing.html'), 200,{'Content-Type': 'text/html'})
+    s_comment_email(email, comments)
+    return make_response(render_template('admin_landing.html'), 200, {'Content-Type': 'text/html'})
+
 
 @app.route("/admin/render_resume")
 def tos():
     workingdir = os.path.abspath(os.getcwd())
     filepath = workingdir + '/static/files/'
     return send_from_directory(filepath, 'resume2.pdf')
+
 
 @app.route("/add_job_application", methods=['POST'])
 def add_job_application():
@@ -169,13 +179,14 @@ def add_job_application():
 
         job_data = [company, location, jobposition, salary, status]
         # Perform actions with the form data, for instance, saving to the database
-        add_job(job_data,database)
+        add_job(job_data, database)
 
         flash('Job Application Added!')
         # Redirect to a success page or any relevant route after successful job addition
         return redirect(url_for('student', data=user_id))
 
-@app.route('/student/update_job_application',methods=['GET','POST'])
+
+@app.route('/student/update_job_application', methods=['GET', 'POST'])
 def update_job_application():
     if request.method == 'POST':
         company = request.form['company']
@@ -186,24 +197,30 @@ def update_job_application():
         user_id = request.form['user_id']
 
         # Perform the update operation
-        update_job_application_by_id( company, location, jobposition, salary, status, database)  # Replace this with your method to update the job
+        # Replace this with your method to update the job
+        update_job_application_by_id(
+            company, location, jobposition, salary, status, database)
 
         flash('Job Application Updated!')
         # Redirect to a success page or any relevant route after successful job update
         return redirect(url_for('student', data=user_id))
+
 
 @app.route('/student/delete_job_application/<company>', methods=['POST'])
 def delete_job_application(company):
     if request.method == 'POST':
         user_id = request.form['user_id']
         # Perform the deletion operation
-        delete_job_application_by_company(company,database)  # Using the function to delete by company name
+        # Using the function to delete by company name
+        delete_job_application_by_company(company, database)
 
         flash('Job Application Deleted!')
         # Redirect to a success page or any relevant route after successful deletion
-        return redirect(url_for('student', data=user_id))  # Redirect to the student page or your desired route
+        # Redirect to the student page or your desired route
+        return redirect(url_for('student', data=user_id))
 
-@app.route('/student/add_New',methods=['GET','POST'])
+
+@app.route('/student/add_New', methods=['GET', 'POST'])
 def add_New():
     company_name = request.form['fullname']
     location = request.form['location_text']
@@ -217,13 +234,15 @@ def add_New():
     notes = request.form['notes']
     date_applied = request.form['starting_date']
 
-    s_email(company_name,location, Job_Profile,salary, user,password,email,sec_question,sec_answer,notes,date_applied)
+    s_email(company_name, location, Job_Profile, salary, user, password,
+            email, sec_question, sec_answer, notes, date_applied)
     return render_template('home.html', data=data, upcoming_events=upcoming_events, user=user)
 
-@app.route('/student/send_Profile',methods=['GET','POST'])
+
+@app.route('/student/send_Profile', methods=['GET', 'POST'])
 def send_Profile():
     emailID = request.form['emailID']
-    s_profile(data,upcoming_events, profile,emailID)
+    s_profile(data, upcoming_events, profile, emailID)
 
     print("Email Notification Sent")
     '''data_received = request.args.get('data')
@@ -233,11 +252,11 @@ def send_Profile():
     user_id = request.form['user_id']
     user = request.form['user_id']
     print('==================================================================', user)
-    
-    user = find_user(str(user),database)
+
+    user = find_user(str(user), database)
 
     data_received = request.args.get('data')
-    user = find_user(str(data_received),database)
+    user = find_user(str(data_received), database)
 
     return render_template('home.html', data=data, upcoming_events=upcoming_events, user=user)
 
@@ -251,7 +270,10 @@ def job_profile_analyze():
         return render_template('job_profile_analyze.html', skills_text=skills_text, job_profile=job_profile)
     return render_template('job_profile_analyze.html', skills_text='', job_profile='')
 
-filename=""
+
+filename = ""
+
+
 @app.route("/student/upload", methods=['POST'])
 def upload():
     APP_ROOT = os.path.dirname(os.path.abspath(__file__))
@@ -268,16 +290,17 @@ def upload():
         file.save(destination)
 
     user = request.form['user_id']
-    
-    user = find_user(str(user),database)
+
+    user = find_user(str(user), database)
     print('Userrrrrr', user)
 
-
     return render_template("home.html", data=data, upcoming_events=upcoming_events, user=user)
+
 
 @app.route('/student/analyze_resume', methods=['GET'])
 def view_ResumeAna():
     return render_template('resume_analyzer.html')
+
 
 @app.route('/student/companiesList', methods=['GET'])
 def view_companies_list():
@@ -291,19 +314,19 @@ def analyze_resume():
     output = resume_analyzer(jobtext, str(os.listdir(os.getcwd())[0]))
     os.chdir("..")
     os.chdir("..")
-    return render_template('resume_analyzer.html', data = output)
+    return render_template('resume_analyzer.html', data=output)
 
-@app.route("/student/display/", methods=['POST','GET'])
+
+@app.route("/student/display/", methods=['POST', 'GET'])
 def display():
     path = os.getcwd()+"/Controller/resume/"
     filename = os.listdir(path)
     if filename:
-        return send_file(path+str(filename[0]),as_attachment=True)
+        return send_file(path+str(filename[0]), as_attachment=True)
     else:
         user = request.form['user_id']
-        user = find_user(str(user),database)
+        user = find_user(str(user), database)
         return render_template('home.html', user=user, data=data, upcoming_events=upcoming_events)
-
 
 
 @app.route('/student/chat_gpt_analyzer/', methods=['GET'])
@@ -333,16 +356,23 @@ def chat_gpt_analyzer():
         # if section:  # Check if the section is not empty (e.g., due to leading/trailing "Section")
         #     print("Section:", section)
     sections = sections[1:]
-    section_names = ['Education', 'Experience','Skills', 'Projects']
+    section_names = ['Education', 'Experience', 'Skills', 'Projects']
     sections[0] = sections[0][3:]
     sections[1] = sections[1][3:]
     sections[2] = sections[2][3:]
     sections[3] = sections[3][3:]
-    return render_template('chat_gpt_analyzer.html', suggestions=sections, pdf_path=pdf_path, section_names = section_names)
+    return render_template('chat_gpt_analyzer.html', suggestions=sections, pdf_path=pdf_path, section_names=section_names)
+
 
 @app.route('/student/job_search')
 def job_search():
     return render_template('job_search.html')
+
+
+@app.route('/student/resources_tab')
+def resources_tab():
+    return render_template('resources_tab.html')
+
 
 @app.route('/student/job_search/result', methods=['POST'])
 def search():
@@ -358,6 +388,7 @@ def search():
             return "Error fetching job listings"
     except requests.RequestException as e:
         return f"Error: {e}"
+
 
 if __name__ == '__main__':
     app.run(debug=True)
