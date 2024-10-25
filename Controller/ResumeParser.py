@@ -17,7 +17,7 @@ from pdfminer.pdfinterp import PDFPageInterpreter
 from pdfminer.pdfinterp import PDFResourceManager
 from pdfminer.pdfpage import PDFPage
 # Docx resume
-import docx2txt
+# import docx2txt
 import PyPDF2
 # Wordcloud
 import re
