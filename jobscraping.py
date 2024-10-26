@@ -5,6 +5,7 @@ import time
 from time import sleep
 import pandas as pd
 from random import randint
+import json
 
 import selenium
 from selenium import webdriver
@@ -15,19 +16,28 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
+import sys
 
 service = ChromeService(
     r"C:\\Users\\bihan\\Downloads\\chromedriver-win64\\chromedriver.exe")
 
 option = webdriver.ChromeOptions()
 option.add_argument("--incognito")
+# option.add_argument("--headless")
+# option.add_argument("--start-minimized")
+# option.add_argument("--headless=new")
+option.add_argument("--window-position=2000,0")
 
 service.start()
 driver = webdriver.Remote(service.service_url, options=option)
 
 
-job_ = 'Software+Developer'
-location = 'Raleigh'
+# job_ = 'Content Writing'
+# location = 'New+York'
+
+job_ = sys.argv[1] if len(sys.argv) > 1 else 'Engineering'
+location = sys.argv[2] if len(sys.argv) > 2 else 'Raleigh'
+
 
 # driver.get(paginaton_url.format(job_, location, 0))
 
@@ -37,6 +47,7 @@ driver.get(paginaton_url.format(job_, location))
 
 soup = BeautifulSoup(driver.page_source, 'html.parser')
 
+jobs_data = []
 
 # Loop through each <li> element with the specified classes
 for li in soup.find_all('li', class_='css-1ac2h1w eu4oa1w0'):
@@ -53,17 +64,31 @@ for li in soup.find_all('li', class_='css-1ac2h1w eu4oa1w0'):
     job_link = 'https://www.indeed.com' + job_title_elem.find_parent(
         'a')['href'] if job_title_elem and job_title_elem.find_parent('a') else None
 
+    # if job_title:
+    #     print(f"Job Title: {job_title}")
+    # if company_name:
+    #     print(f"Company Name: {company_name}")
+    # if location:
+    #     print(f"Location: {location}")
+    # if job_link:
+    #     print(f"Job Link: {job_link}")
+
+    # print("\n")
+    
     if job_title:
-        print(f"Job Title: {job_title}")
-    if company_name:
-        print(f"Company Name: {company_name}")
-    if location:
-        print(f"Location: {location}")
-    if job_link:
-        print(f"Job Link: {job_link}")
+        jobs_data.append({
+            "job_title": job_title,
+            "company_name": company_name,
+            "location": location,
+            "job_link": job_link
+        })
 
-    print("\n")
+# Save jobs data to JSON file
+with open("jobs_data.json", "w") as json_file:
+    json.dump(jobs_data, json_file, indent=4)
+
+print("Job data saved to jobs_data.json")
 
 
-time.sleep(25)
+time.sleep(15)
 driver.quit()
