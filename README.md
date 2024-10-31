@@ -2,15 +2,25 @@ Group 46
 Ananya Doshi, Riya Bihani, Vansh Dodiya
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14020215.svg)](https://doi.org/10.5281/zenodo.14020215)
 
-[![Manual Build](https://img.shields.io/github/actions/workflow/status/Vansh17/SE_Project1_Wolftrack/main.yml)](https://github.com/RAV-Organization/SE_Project1_Wolftrack/actions)
+[![Python application](https://github.com/RAV-Organization/SE_Project1_Wolftrack/actions/workflows/python-build.yml/badge.svg)](https://github.com/RAV-Organization/SE_Project1_Wolftrack/actions/workflows/python-build.yml)
 
-[![codecov](https://codecov.io/gh/aniketdarp190301/WolfTrack4.0/graph/badge.svg?token=3OWJ1DERO5)](https://app.codecov.io/github/rutuja-39/WolfTrack5.0/tree/dev/graph)
+[![codecov](https://codecov.io/gh/RAV-Organization/SE_Project1_Wolftrack/graph/badge.svg?token=9O8BPRZKZD)](https://codecov.io/gh/RAV-Organization/SE_Project1_Wolftrack)
 
-![GitHub language count](https://img.shields.io/github/languages/count/rutuja-39/WolfTrack5.0)
-[![GitHub pull-requests](https://img.shields.io/github/issues-pr/rutuja-39/WolfTrack5.0)](https://github.com/rutuja-39/WolfTrack5.0/pulls)
-[![GitHub-size](https://img.shields.io/github/repo-size/rutuja-39/WolfTrack5.0)](https://github.com/rutuja-39/WolfTrack5.0)
-[![GitHub issues](https://img.shields.io/github/issues/rutuja-39/WolfTrack5.0)](https://github.com/rutuja-39/WolfTrack5.0/issues)
-[![GitHub-closed-issues](https://img.shields.io/github/issues-closed/rutuja-39/WolfTrack5.0)](https://github.com/rutuja-39/WolfTrack5.0/issues?q=is%3Aissue+is%3Aclosed)
+![GitHub language count](https://img.shields.io/github/languages/count/RAV-Organization/SE_Project1_Wolftrack)
+
+<!-- [![GitHub pull-requests](https://img.shields.io/github/issues-pr/rutuja-39/WolfTrack5.0)](https://github.com/rutuja-39/WolfTrack5.0/pulls) -->
+![GitHub Pull Requests](https://img.shields.io/github/issues-pr/RAV-Organization/SE_Project1_Wolftrack)
+
+
+<!-- [![GitHub-size](https://img.shields.io/github/repo-size/rutuja-39/WolfTrack5.0)](https://github.com/rutuja-39/WolfTrack5.0) -->
+![GitHub repo size](https://img.shields.io/github/repo-size/RAV-Organization/SE_Project1_Wolftrack)
+
+<!-- [![GitHub issues](https://img.shields.io/github/issues/Vansh17/SE_Project1_Wolftrack)](https://github.com/rutuja-39/WolfTrack5.0/issues) -->
+![GitHub Issues](https://img.shields.io/github/issues/RAV-Organization/SE_Project1_Wolftrack)
+
+<!-- 
+[![GitHub-closed-issues](https://img.shields.io/github/issues-closed/rutuja-39/WolfTrack5.0)](https://github.com/rutuja-39/WolfTrack5.0/issues?q=is%3Aissue+is%3Aclosed) -->
+![GitHub Issues Closed](https://img.shields.io/github/issues-closed/RAV-Organization/SE_Project1_Wolftrack)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
