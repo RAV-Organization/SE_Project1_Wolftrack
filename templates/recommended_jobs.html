@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Search</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #ff0000;
+            color: #ff0000;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            color: #ff0000;
+            font-size: 2.5em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        form {
+            margin: 20px 0;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            margin: 0 5px;
+            border: 2px solid #ff0000;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #ff0000;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #d70000;
+        }
+
+        #results {
+            text-align: left;
+            padding: 20px;
+            border-top: 2px solid #ff0000;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        #results h3 {
+            color: #ff0000;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        #results p {
+            color: #000;
+            margin: 5px 0;
+        }
+
+        .apply-link {
+            color: #000;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        .apply-link:hover {
+            color: #ffffff;
+            background-color: #ff0000;
+            padding: 3px 5px;
+            border-radius: 5px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Job Search</h1>
+        <form id="searchForm">
+            <input type="text" id="job_title" name="job_title" placeholder="Job Title" required>
+            <input type="text" id="location" name="location" placeholder="Location" required>
+            <button type="submit">Search</button>
+        </form>
+
+        <h2>Results</h2>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        $('#searchForm').on('submit', function (e) {
+            e.preventDefault();
+
+            const jobTitle = $('#job_title').val();
+            const location = $('#location').val();
+
+            $.post('/student/job_search/result', { job_title: jobTitle, location: location }, function (data) {
+                $('#results').empty();
+                data.forEach((job, index) => {
+                    $('#results').append(`<div>
+                        <h3>${index + 1}. ${job.job_title}</h3>
+                        <p>Company: ${job.company_name}</p>
+                        <p>Location: ${job.location}</p>
+                        <p><a href="${job.job_link}" target="_blank" class="apply-link">Apply Now</a></p>
+                    </div>`);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
