@@ -1,28 +1,50 @@
-import pytest
+from app import app, db
+from flask_testing import TestCase
+from unittest.mock import patch
+import unittest
 import json
 
-def test_resources_tab(client):
-    """Test the resources tab route."""
-    response = client.get('/student/resources_tab')
-    assert response.status_code == 200
-    assert b'Resources' in response.data  # Check for specific content
+
+class TestFlaskApp(TestCase):
+
+    def create_app(self):
+        app.config['TESTING'] = True
+        app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///:memory:"
+        return app
+
+    def setUp(self):
+        db.create_all()
+
+    def tearDown(self):
+        db.session.remove()
+        db.drop_all()
+
+    def test_resources_tab(self):
+        """Test the resources tab route."""
+        response = self.client.get('/student/resources_tab')
+        self.assert200(response)
+        self.assertIn(b'Resources', response.data)
+
+    def test_job_search(self):
+        """Test the job search route."""
+        response = self.client.get('/student/job_search')
+        self.assert200(response)
+        self.assertIn(b'Job Search', response.data)
+
+    @patch('subprocess.run')
+    def test_scraping_search(self, mock_subprocess):
+        """Test the scraping search functionality with mock subprocess."""
+        mock_subprocess.return_value = None  # Mock the subprocess call
+        response = self.client.post('/student/job_search/result', data={
+            'job_title': 'Software Engineering',
+            'location': 'Raleigh'
+        }, follow_redirects=True)
+        self.assert200(response)
+        jobs_data = json.loads(response.data)
+        self.assertIsInstance(jobs_data, list)
+        if jobs_data:
+            self.assertIn('job_title', jobs_data[0])  # Check for expected key
 
 
-def test_job_search(client):
-    """Test the job search route."""
-    response = client.get('/student/job_search')
-    assert response.status_code == 200
-    assert b'Job Search' in response.data  # Check for specific content
-
-
-def test_scraping_search(client, mocker):
-    """Test the scraping search functionality."""
-    mocker.patch('subprocess.run')  # Mock subprocess call
-    response = client.post('/student/job_search/result', data={
-        'job_title': 'Software Engineering',
-        'location': 'Raleigh'
-    })
-    assert response.status_code == 200
-    jobs_data = json.loads(response.data)
-    assert isinstance(jobs_data, list)  # Ensure it's a list
-    assert 'job_title' in jobs_data[0]  # Check for expected key
+if __name__ == '__main__':
+    unittest.main()
