@@ -9,6 +9,9 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 '''
+import subprocess
+import json
+from flask import render_template
 import os
 from flask import Flask, request, render_template, make_response, redirect, url_for, send_from_directory, session, flash
 from flask_sqlalchemy import SQLAlchemy
@@ -388,6 +391,44 @@ def search():
             return "Error fetching job listings"
     except requests.RequestException as e:
         return f"Error: {e}"
+
+# ***********************************
+
+
+# @app.route('/recommended_jobs', methods=['GET'])
+# def recommended_jobs():
+#     # Read the job data from the JSON file
+#     try:
+#         with open('jobs.json', 'r') as file:
+#             jobs = json.load(file)
+#     except FileNotFoundError:
+#         jobs = []  # If the file is not found, return an empty list
+
+#     # Pass the jobs to the template
+#     return render_template('recommended_jobs.html', jobs=jobs)
+def load_jobs_from_json():
+    try:
+        with open('jobs_data.json', 'r') as file:
+            return json.load(file)  # Adjusted if jobs_data.json is a list
+    except FileNotFoundError:
+        return []
+
+
+@app.route('/recommended_jobs', methods=['GET'])
+def recommended_jobs():
+    job_title = request.args.get('job_title')
+    location = request.args.get('location')
+
+    # Run jobscraping.py with the provided job title and location
+    if job_title and location:
+        # Call jobscraping.py, ensure it writes to jobs_data.json
+        subprocess.run(['python', 'jobscraping.py', job_title, location])
+
+    # Load job data from 'jobs_data.json'
+    jobs = load_jobs_from_json()
+    return render_template('recommended_jobs.html', jobs=jobs)
+
+# *************************************
 
 
 if __name__ == '__main__':
