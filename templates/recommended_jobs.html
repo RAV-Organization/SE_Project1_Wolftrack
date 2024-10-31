@@ -125,7 +125,7 @@
             const jobTitle = $('#job_title').val();
             const location = $('#location').val();
 
-            $.post('/student/recommended_jobs/recommended_jobs_results', { job_title: jobTitle, location: location }, function (data) {
+            $.post('/student/job_search/result', { job_title: jobTitle, location: location }, function (data) {
                 $('#results').empty();
                 data.forEach((job, index) => {
                     $('#results').append(`<div>
