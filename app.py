@@ -9,8 +9,11 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 '''
+import subprocess
+import json
+from flask import render_template
 import os
-from flask import Flask, request, render_template, make_response, redirect, url_for, send_from_directory, session, flash, jsonify
+from flask import Flask, request, render_template, make_response, redirect,  url_for,  send_from_directory, session, flash, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_wtf import FlaskForm
@@ -219,7 +222,11 @@ def delete_job_application(company):
         # Redirect to the student page or your desired route
         return redirect(url_for('student', data=user_id))
 
+        # Redirect to the student page or your desired route
+        return redirect(url_for('student', data=user_id))
 
+
+@app.route('/student/add_New', methods=['GET', 'POST'])
 @app.route('/student/add_New', methods=['GET', 'POST'])
 def add_New():
     company_name = request.form['fullname']
@@ -236,8 +243,12 @@ def add_New():
 
     s_email(company_name, location, Job_Profile, salary, user, password,
             email, sec_question, sec_answer, notes, date_applied)
+    s_email(company_name, location, Job_Profile, salary, user, password,
+            email, sec_question, sec_answer, notes, date_applied)
     return render_template('home.html', data=data, upcoming_events=upcoming_events, user=user)
 
+
+@app.route('/student/send_Profile', methods=['GET', 'POST'])
 
 @app.route('/student/send_Profile', methods=['GET', 'POST'])
 def send_Profile():
@@ -252,6 +263,8 @@ def send_Profile():
     user_id = request.form['user_id']
     user = request.form['user_id']
     print('==================================================================', user)
+
+    user = find_user(str(user), database)
 
     user = find_user(str(user), database)
 
@@ -316,15 +329,20 @@ def analyze_resume():
     os.chdir("..")
     return render_template('resume_analyzer.html', data=output)
 
+    return render_template('resume_analyzer.html', data=output)
 
+
+@app.route("/student/display/", methods=['POST', 'GET'])
 @app.route("/student/display/", methods=['POST', 'GET'])
 def display():
     path = os.getcwd()+"/Controller/resume/"
     filename = os.listdir(path)
     if filename:
         return send_file(path+str(filename[0]), as_attachment=True)
+        return send_file(path+str(filename[0]), as_attachment=True)
     else:
         user = request.form['user_id']
+        user = find_user(str(user), database)
         user = find_user(str(user), database)
         return render_template('home.html', user=user, data=data, upcoming_events=upcoming_events)
 
@@ -356,6 +374,7 @@ def chat_gpt_analyzer():
         # if section:  # Check if the section is not empty (e.g., due to leading/trailing "Section")
         #     print("Section:", section)
     sections = sections[1:]
+    section_names = ['Education', 'Experience', 'Skills', 'Projects']
     section_names = ['Education', 'Experience', 'Skills', 'Projects']
     sections[0] = sections[0][3:]
     sections[1] = sections[1][3:]
@@ -390,6 +409,11 @@ import subprocess
 import json
 
 
+@app.route('/student/resources_tab')
+def resources_tab():
+    return render_template('resources_tab.html')
+
+
 @app.route('/student/job_search')
 def scraping_index():
     return render_template('recommended_jobs.html')
@@ -409,7 +433,9 @@ def scraping_search():
 
     return jsonify(jobs_data)
 
-# *****
+
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

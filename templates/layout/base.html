@@ -234,7 +234,7 @@
         >
       </ul>
       <ul class="navbar-nav ml-auto">
-        <a href="/chat_gpt_analyzer" style="color: #facaca; text-decoration: none">Resume Suggestions</a>
+        <a href="/student/resources_tab" style="color: #facaca; text-decoration: none">Resources</a>
     </ul>
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
@@ -419,29 +419,55 @@
             <div class="section-division"></div>
             <div class="section-content">
               <form
-                id="upload-form"
-                action="{{url_for('upload', user_id = user[2])}}"
-                method="POST"
-                enctype="multipart/form-data"
-              >
-                <input type="hidden" name="user_id" value="{{ user[2] }}" />
-                <input
-                  type="file"
-                  name="file"
-                  multiple
-                  style="color: #1d4552; font-size: 14px"
-                />
-                <button
-                  href="upload"
-                  type="Submit"
-                  value="upload(user[2])"
-                  name="Upload"
-                  class="btn btn-dark"
-                  style="margin-top: 5%; position: relative"
-                >
-                  Add CV
-                </button>
-              </form>
+  id="upload-form"
+  action="{{url_for('upload', user_id = user[2])}}"
+  method="POST"
+  enctype="multipart/form-data"
+  onsubmit="showSuccessMessage(event)"
+>
+  <input type="hidden" name="user_id" value="{{ user[2] }}" />
+  <input
+    type="file"
+    name="file"
+    multiple
+    style="color: #1d4552; font-size: 14px"
+    id="cv-file-input"
+  />
+  <button
+    type="Submit"
+    class="btn btn-dark"
+    style="margin-top: 5%; position: relative"
+  >
+    Add CV
+  </button>
+</form>
+
+<!-- This div will display the success message -->
+
+<div id="cv-upload-status" style="margin-top: 10px; color: green; font-size: 12px"></div>
+
+<script>
+  function showSuccessMessage(event) {
+    // Prevent the form from submitting the traditional way for testing purposes
+    event.preventDefault();
+    
+    // Get the file input and display the selected file names
+    const fileInput = document.getElementById("cv-file-input");
+    const statusDiv = document.getElementById("cv-upload-status");
+
+    if (fileInput.files.length > 0) {
+      // For simplicity, display the names of uploaded files
+      const fileNames = Array.from(fileInput.files).map(file => file.name).join(", ");
+      statusDiv.innerHTML = `Document(s) added: ${fileNames}`;
+
+      // Uncomment the next line to actually submit the form after displaying the message
+       event.target.submit();
+    } else {
+      statusDiv.innerHTML = "Please select a file to upload.";
+    }
+  }
+</script>
+
               <form
                 action="{{url_for('display')}}"
                 method="POST"

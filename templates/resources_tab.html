@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Job Resources</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background:  #ff0000;
+            color: #ff0000;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 2px solid #ff0000;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: scale(1.02);
+        }
+
+        h1 {
+            color: #ff0000;
+            font-size: 2.5em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+        }
+
+        .dropdown {
+            margin: 30px 0;
+        }
+
+        select {
+            padding: 10px;
+            border: 2px solid #ff0000;
+            border-radius: 5px;
+            font-size: 16px;
+            background-color: #fff;
+            color: #ff0000;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        select:hover {
+            background-color: #ffecec;
+        }
+
+        .resources-section {
+            margin-top: 20px;
+            display: none; /* Hide by default */
+            text-align: left;
+            padding: 20px;
+            border-top: 2px solid #ff0000;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .resource-list {
+            padding-left: 20px;
+            text-align: left;
+        }
+
+        .resource-list li {
+            margin-bottom: 10px;
+        }
+
+        .section-heading {
+            color: #ff0000;
+            font-weight: bold;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-heading::before {
+            content: '📘';
+            margin-right: 8px;
+        }
+
+        a {
+            color: #ff0000;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        a:hover {
+            color: #ffffff;
+            background-color: #ff0000;
+            padding: 3px 5px;
+            border-radius: 5px;
+        }
+
+        .back-to-top {
+            display: block;
+            margin-top: 30px;
+            padding: 10px;
+            border: 2px solid #ff0000;
+            background-color: #ffecec;
+            color: #ff0000;
+            text-align: center;
+            width: 150px;
+            margin-left: auto;
+            margin-right: auto;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .back-to-top:hover {
+            background-color: #ff0000;;
+            color: #fff;
+        }
+    </style>
+    <script>
+        function displayResources() {
+            var jobRole = document.getElementById("job-role").value;
+            var sections = document.querySelectorAll(".resources-section");
+
+            sections.forEach(function(section) {
+                section.style.display = "none"; // Hide all sections
+            });
+
+            if (jobRole) {
+                document.getElementById(jobRole).style.display = "block"; // Show the selected section
+            }
+        }
+
+        function backToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Job Resources</h1>
+        <div class="dropdown">
+            <label for="job-role">Select Job Role:</label>
+            <select id="job-role" onchange="displayResources()">
+                <option value="">-- Select --</option>
+                <option value="software-engineer">Software Engineer</option>
+                <option value="ml-engineer">Machine Learning Engineer</option>
+                <option value="data-analyst">Data Analyst</option>
+            </select>
+        </div>
+        
+        <!-- Resources Sections -->
+        <div id="software-engineer" class="resources-section">
+            <h3>Resources for Software Engineers</h3>
+            <ul class="resource-list">
+                <li class="section-heading">Online Courses</li>
+                <li><a href="https://www.coursera.org/specializations/javascript" target="_blank">Learn JavaScript</a></li>
+                <li><a href="https://www.educative.io/courses/grokking-the-system-design-interview" target="_blank">System Design Basics</a></li>
+
+                <li class="section-heading">Interview Preparation</li>
+                <li><a href="https://www.leetcode.com/" target="_blank">LeetCode Practice Problems</a></li>
+                <li><a href="https://www.interviewbit.com/" target="_blank">InterviewBit Coding Interview Prep</a></li>
+                
+                <li class="section-heading">YouTube Channels</li>
+                <li><a href="https://www.youtube.com/c/TechWithTim" target="_blank">Tech With Tim</a> - Tutorials & Projects</li>
+                <li><a href="https://www.youtube.com/c/CSDojo" target="_blank">CS Dojo</a> - Coding Interviews & Problem-Solving</li>
+                
+                <li class="section-heading">Frequently Asked Questions</li>
+                <li><a href="https://www.turing.com/interview-questions/software-engineering" target="_blank">Top 100 Software Engineering Interview Questions</a></li>
+            </ul>
+            <div class="back-to-top" onclick="backToTop()">Back to Top</div>
+        </div>
+
+        <div id="ml-engineer" class="resources-section">
+            <h3>Resources for Machine Learning Engineers</h3>
+            <ul class="resource-list">
+                <li class="section-heading">Online Courses</li>
+                <li><a href="https://www.coursera.org/specializations/deep-learning" target="_blank">Deep Learning Specialization by Andrew Ng</a></li>
+                <li><a href="https://www.udemy.com/course/machine-learning-with-python/" target="_blank">Machine Learning with Python</a></li>
+
+                <li class="section-heading">Interview Preparation</li>
+                <li><a href="https://www.interviewquery.com/" target="_blank">Interview Query</a> - ML Interview Practice</a></li>
+                <li><a href="https://www.kaggle.com/" target="_blank">Kaggle - Hands-On Practice & Competitions</a></li>
+                
+                <li class="section-heading">YouTube Channels</li>
+                <li><a href="https://www.youtube.com/c/3Blue1Brown" target="_blank">3Blue1Brown</a> - Visualized Math & ML Concepts</a></li>
+                <li><a href="https://www.youtube.com/c/Sentdex" target="_blank">Sentdex</a> - ML Tutorials & Projects</a></li>
+
+                <li class="section-heading">Study Guides</li>
+                <li><a href="https://www.domo.com/glossary/what-are-machine-learning-basics" target="_blank">Machine Learning Study Guide</a> - Core Concepts & Algorithms</li>
+            </ul>
+            <div class="back-to-top" onclick="backToTop()">Back to Top</div>
+        </div>
+
+        <div id="data-analyst" class="resources-section">
+            <h3>Resources for Data Analysts</h3>
+            <ul class="resource-list">
+                <li class="section-heading">Online Courses</li>
+                <li><a href="https://www.coursera.org/learn/python-for-data-visualization" target="_blank">Data Visualization with Python</a></li>
+                <li><a href="https://www.udemy.com/course/the-complete-sql-bootcamp/" target="_blank">SQL for Data Analysis</a></li>
+                
+                <li class="section-heading">Interview Preparation</li>
+                <li><a href="https://www.glassdoor.com/Interview/data-analyst-interview-questions-SRCH_KO0,12.htm" target="_blank">Common Data Analyst Interview Questions</a></li>
+                <li><a href="https://www.excel-easy.com/" target="_blank">Excel Tips for Analysts</a></li>
+                
+                <li class="section-heading">YouTube Channels</li>
+                <li><a href="https://www.youtube.com/c/StatQuest" target="_blank">StatQuest</a> - Statistics & Data Analysis</a></li>
+                <li><a href="https://www.youtube.com/c/edurekaIN" target="_blank">Edureka!</a> - Data Analytics & BI Tools</a></li>
+
+                <li class="section-heading">Frequently Asked Questions</li>
+                <li><a href="https://www.simplilearn.com/tutorials/data-analytics-tutorial/data-analyst-interview-questions" target="_blank">Data Analysis FAQs</a> - What You Should Know</li>
+            </ul>
+            <div class="back-to-top" onclick="backToTop()">Back to Top</div>
+        </div>
+    </div>
+</body>
+</html>
