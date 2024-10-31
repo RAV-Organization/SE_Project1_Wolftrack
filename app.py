@@ -80,6 +80,10 @@ class LoginForm(FlaskForm):
 def index():
     return render_template('index.html')
 
+@app.route('/stats', methods=['GET'])
+def stats():
+    return render_template('stats.html')
+
 @app.route('/logout',methods=['GET', 'POST'])
 def logout():
     session['type'] = ''
