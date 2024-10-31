@@ -35,7 +35,7 @@ driver = webdriver.Remote(service.service_url, options=option)
 # job_ = 'Content Writing'
 # location = 'New+York'
 
-job_ = sys.argv[1] if len(sys.argv) > 1 else 'Engineering'
+job_ = sys.argv[1] if len(sys.argv) > 1 else 'Software Engineering'
 location = sys.argv[2] if len(sys.argv) > 2 else 'Raleigh'
 
 
