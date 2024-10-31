@@ -1,5 +1,20 @@
 Group 46
 Ananya Doshi, Riya Bihani, Vansh Dodiya
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14020215.svg)](https://doi.org/10.5281/zenodo.14020215)
+
+[![Manual Build](https://img.shields.io/github/actions/workflow/status/Vansh17/SE_Project1_Wolftrack/main.yml)](https://github.com/RAV-Organization/SE_Project1_Wolftrack/actions)
+
+[![codecov](https://codecov.io/gh/aniketdarp190301/WolfTrack4.0/graph/badge.svg?token=3OWJ1DERO5)](https://app.codecov.io/github/rutuja-39/WolfTrack5.0/tree/dev/graph)
+
+![GitHub language count](https://img.shields.io/github/languages/count/rutuja-39/WolfTrack5.0)
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/rutuja-39/WolfTrack5.0)](https://github.com/rutuja-39/WolfTrack5.0/pulls)
+[![GitHub-size](https://img.shields.io/github/repo-size/rutuja-39/WolfTrack5.0)](https://github.com/rutuja-39/WolfTrack5.0)
+[![GitHub issues](https://img.shields.io/github/issues/rutuja-39/WolfTrack5.0)](https://github.com/rutuja-39/WolfTrack5.0/issues)
+[![GitHub-closed-issues](https://img.shields.io/github/issues-closed/rutuja-39/WolfTrack5.0)](https://github.com/rutuja-39/WolfTrack5.0/issues?q=is%3Aissue+is%3Aclosed)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+
 
 ## Getting Started & Installation:
 
