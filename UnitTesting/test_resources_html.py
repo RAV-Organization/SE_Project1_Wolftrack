@@ -1,4 +1,3 @@
-# test_app.py
 import unittest
 from app import app  # Assuming your app is named app.py
 

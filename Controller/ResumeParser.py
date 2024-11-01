@@ -26,7 +26,7 @@ import operator
 import nltk
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
-import docx2txt
+# import docx2txt
 nltk.download('stopwords')
 nltk.download('punkt')
 set(stopwords.words('english'))

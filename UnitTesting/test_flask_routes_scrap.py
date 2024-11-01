@@ -34,7 +34,7 @@ class TestFlaskApp(TestCase):
     @patch('subprocess.run')
     def test_scraping_search(self, mock_subprocess):
         """Test the scraping search functionality with mock subprocess."""
-        mock_subprocess.return_value = None  # Mock the subprocess call
+        mock_subprocess.return_value = None  
         response = self.client.post('/student/job_search/result', data={
             'job_title': 'Software Engineering',
             'location': 'Raleigh'
@@ -43,7 +43,7 @@ class TestFlaskApp(TestCase):
         jobs_data = json.loads(response.data)
         self.assertIsInstance(jobs_data, list)
         if jobs_data:
-            self.assertIn('job_title', jobs_data[0])  # Check for expected key
+            self.assertIn('job_title', jobs_data[0])  
 
 
 if __name__ == '__main__':
