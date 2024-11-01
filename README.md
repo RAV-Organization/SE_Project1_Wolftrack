@@ -5,22 +5,22 @@ Ananya Doshi, Riya Bihani, Vansh Dodiya
 
 [![Python application](https://github.com/RAV-Organization/SE_Project1_Wolftrack/actions/workflows/python-build.yml/badge.svg)](https://github.com/RAV-Organization/SE_Project1_Wolftrack/actions/workflows/python-build.yml)
 
-[![codecov](https://codecov.io/gh/RAV-Organization/SE_Project1_Wolftrack/graph/badge.svg?token=9O8BPRZKZD)](https://codecov.io/gh/RAV-Organization/SE_Project1_Wolftrack) 
+<!-- [![codecov](https://codecov.io/gh/RAV-Organization/SE_Project1_Wolftrack/graph/badge.svg?token=9O8BPRZKZD)](https://codecov.io/gh/RAV-Organization/SE_Project1_Wolftrack)  -->
 
-![GitHub language count](https://img.shields.io/github/languages/count/RAV-Organization/SE_Project1_Wolftrack)
-
-
-![GitHub Pull Requests](https://img.shields.io/github/issues-pr/RAV-Organization/SE_Project1_Wolftrack)(https://github.com/RAV-Organization/SE_Project1_Wolftrack/pulls)
+[![GitHub language count](https://img.shields.io/github/languages/count/RAV-Organization/SE_Project1_Wolftrack)]
 
 
-
-![GitHub repo size](https://img.shields.io/github/repo-size/RAV-Organization/SE_Project1_Wolftrack)(https://github.com/RAV-Organization/SE_Project1_Wolftrack/tree/wolftrack6.0)
-
-
-![GitHub Issues](https://img.shields.io/github/issues/RAV-Organization/SE_Project1_Wolftrack)(https://github.com/RAV-Organization/SE_Project1_Wolftrack/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/RAV-Organization/SE_Project1_Wolftrack)](https://github.com/RAV-Organization/SE_Project1_Wolftrack/pulls)
 
 
-![GitHub Issues Closed](https://img.shields.io/github/issues-closed/RAV-Organization/SE_Project1_Wolftrack)(https://github.com/RAV-Organization/SE_Project1_Wolftrack/issues?q=is%3Aissue+is%3Aclosed)
+
+[![GitHub repo size](https://img.shields.io/github/repo-size/RAV-Organization/SE_Project1_Wolftrack)](https://github.com/RAV-Organization/SE_Project1_Wolftrack/tree/wolftrack6.0)
+
+
+[![GitHub Issues](https://img.shields.io/github/issues/RAV-Organization/SE_Project1_Wolftrack)](https://github.com/RAV-Organization/SE_Project1_Wolftrack/issues)
+
+
+[![GitHub Issues Closed](https://img.shields.io/github/issues-closed/RAV-Organization/SE_Project1_Wolftrack)](https://github.com/RAV-Organization/SE_Project1_Wolftrack/issues?q=is%3Aissue+is%3Aclosed)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
