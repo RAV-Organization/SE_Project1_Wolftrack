@@ -72,7 +72,6 @@ Wolftrack6.0 is an online platform for the easy and efficient organization in yo
 2. Resume Template Editor.
 3. Bookmarking liked jobs.
 4. Recommendation system for Jobs
-5. 
 
 <h2>Demo Videos</h2>
 <h3>Demo of WolfTrack5.0 (the previous version)</h3>
@@ -90,3 +89,20 @@ Wolftrack6.0 is an online platform for the easy and efficient organization in yo
 4. JavaScript
 5. Flask
 6. SQLite
+
+<h2>Contributing</h2>
+Are you interested in contributing to this project? Visit our contribution documentation for details.
+
+Need some ideas on what has been done? Jump on over to our development project board for specific issues we are tracking and log which areas you are planning to help out on.
+
+This project is made possible by the incredible donation of time from NC State Project Contributors and the advice/support of CSC 510 teaching staff. NC State University has made the resources for this project possible, and will continue to support CSC 510 projects for the forseeable future.
+
+<h2>Help</h2>
+View some common issues users have identified in our troubleshooting guide. We list tips and tricks for identifying where the issue may be coming from. Issue reports may be linked to this guide if you identify a bug that is a software limitation.
+
+You can visit our website with full descriptions of our classes and methods by opening index.html within your file explorer. Included on the website is user profiles of people who should use the software and success stories!
+
+Need more support? Our primary method for addressing bugs and feature requests should be through submitting an issue ticket in the "Issues" tab. If you need additional support, please reach out to our development email develop.nak@gmail.com and a member of the team will be in contact with you shortly. You can also email the development email to asked to be added to our subsriber list for updates regarding the project's development.
+
+<h2>License</h2>
+Distributed under the MIT License. See LICENSE for more information.
