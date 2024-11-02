@@ -37,7 +37,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import cv2
 import pytesseract
-
+import docx2txt
 
 # def read_pdf_resume(pdf_doc):
 #     resource_manager = PDFResourceManager()
