@@ -5,7 +5,7 @@ Ananya Doshi, Riya Bihani, Vansh Dodiya
 
 [![Python application](https://github.com/RAV-Organization/SE_Project1_Wolftrack/actions/workflows/python-build.yml/badge.svg)](https://github.com/RAV-Organization/SE_Project1_Wolftrack/actions/workflows/python-build.yml)
 
-<!-- [![codecov](https://codecov.io/gh/RAV-Organization/SE_Project1_Wolftrack/graph/badge.svg?token=9O8BPRZKZD)](https://codecov.io/gh/RAV-Organization/SE_Project1_Wolftrack)  -->
+[![codecov](https://codecov.io/gh/RAV-Organization/SE_Project1_Wolftrack/graph/badge.svg?token=9O8BPRZKZD)](https://codecov.io/gh/RAV-Organization/SE_Project1_Wolftrack) 
 
 ![GitHub language count](https://img.shields.io/github/languages/count/RAV-Organization/SE_Project1_Wolftrack)
 
