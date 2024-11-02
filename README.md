@@ -76,7 +76,7 @@ Wolftrack6.0 is an online platform for the easy and efficient organization in yo
 <h2>Demo Videos</h2>
 <h3>Demo of WolfTrack5.0 (the previous version)</h3>
 [![Watch the video]
-([https://drive.google.com/file/d/1cLm_iDZnmxvbY80nMbCkkPj-lXCf2lp_/view?usp=drive_link](https://drive.google.com/file/d/1-4nKjXZJjtip131K_Etm1zGsyzA6oJLD/view?usp=drive_link))
+(https://drive.google.com/file/d/1cLm_iDZnmxvbY80nMbCkkPj-lXCf2lp_/view?usp=drive_link)](https://drive.google.com/file/d/1-4nKjXZJjtip131K_Etm1zGsyzA6oJLD/view?usp=drive_link))
 
 <h3>Demo of Wolftrack6.0 (the new version)</h3>
 
