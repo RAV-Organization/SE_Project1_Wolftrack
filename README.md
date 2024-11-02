@@ -77,7 +77,7 @@ Wolftrack6.0 is an online platform for the easy and efficient organization in yo
 <h2>Demo Videos</h2>
 <h3>Demo of WolfTrack5.0 (the previous version)</h3>
 [![Watch the video]
-(https://raw.githubusercontent.com/username/repository/branch/path/to/video.mp4)
+(https://github.com/RAV-Organization/SE_Project1_Wolftrack/blob/wolftrack6.0/WolfTrack5.0.mp4)
 
 <h3>Demo of Wolftrack6.0 (the new version)</h3>
 
