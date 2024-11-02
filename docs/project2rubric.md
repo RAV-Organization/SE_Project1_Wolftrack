@@ -31,7 +31,7 @@
 |Badges showing your style checkers| 3 | |
 |Badges showing your code formatters.| 3 | |
 |Badges showing your syntax checkers.| 3 | |
-|Badges showing your code coverage tools| 3 | Yes |
+|Badges showing your code coverage tools| 2 | Yes |
 |Badges showing any other Other automated analysis tools| 3 | Yes |
 |Does your website and documentation provide a clear, high-level overview of your software?| 3 | Yes |
 |Does your website and documentation clearly describe the type of user who should use your software?| 3 | Yes |
