@@ -7,7 +7,7 @@ Ananya Doshi, Riya Bihani, Vansh Dodiya
 
 <!-- [![codecov](https://codecov.io/gh/RAV-Organization/SE_Project1_Wolftrack/graph/badge.svg?token=9O8BPRZKZD)](https://codecov.io/gh/RAV-Organization/SE_Project1_Wolftrack)  -->
 
-[![GitHub language count](https://img.shields.io/github/languages/count/RAV-Organization/SE_Project1_Wolftrack)]
+![GitHub language count](https://img.shields.io/github/languages/count/RAV-Organization/SE_Project1_Wolftrack)
 
 
 [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/RAV-Organization/SE_Project1_Wolftrack)](https://github.com/RAV-Organization/SE_Project1_Wolftrack/pulls)
