@@ -1,64 +1,52 @@
-Group 46
-Ananya Doshi, Riya Bihani, Vansh Dodiya
+<h1>JobTracker</h1>
+
+SE Group 46 - Ananya Doshi, Riya Bihani, Vansh Dodiya
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14020215.svg)](https://doi.org/10.5281/zenodo.14020215)
-
 [![Python application](https://github.com/RAV-Organization/SE_Project1_Wolftrack/actions/workflows/python-build.yml/badge.svg)](https://github.com/RAV-Organization/SE_Project1_Wolftrack/actions/workflows/python-build.yml)
-
-[![codecov](https://codecov.io/gh/RAV-Organization/SE_Project1_Wolftrack/graph/badge.svg?token=9O8BPRZKZD)](https://codecov.io/gh/RAV-Organization/SE_Project1_Wolftrack)
-
+[![codecov](https://codecov.io/gh/RAV-Organization/SE_Project1_Wolftrack/graph/badge.svg?token=9O8BPRZKZD)](https://codecov.io/gh/RAV-Organization/SE_Project1_Wolftrack) 
 ![GitHub language count](https://img.shields.io/github/languages/count/RAV-Organization/SE_Project1_Wolftrack)
-
-<!-- [![GitHub pull-requests](https://img.shields.io/github/issues-pr/rutuja-39/WolfTrack5.0)](https://github.com/rutuja-39/WolfTrack5.0/pulls) -->
-![GitHub Pull Requests](https://img.shields.io/github/issues-pr/RAV-Organization/SE_Project1_Wolftrack)
-
-
-<!-- [![GitHub-size](https://img.shields.io/github/repo-size/rutuja-39/WolfTrack5.0)](https://github.com/rutuja-39/WolfTrack5.0) -->
-![GitHub repo size](https://img.shields.io/github/repo-size/RAV-Organization/SE_Project1_Wolftrack)
-
-<!-- [![GitHub issues](https://img.shields.io/github/issues/Vansh17/SE_Project1_Wolftrack)](https://github.com/rutuja-39/WolfTrack5.0/issues) -->
-![GitHub Issues](https://img.shields.io/github/issues/RAV-Organization/SE_Project1_Wolftrack)
-
-<!-- 
-[![GitHub-closed-issues](https://img.shields.io/github/issues-closed/rutuja-39/WolfTrack5.0)](https://github.com/rutuja-39/WolfTrack5.0/issues?q=is%3Aissue+is%3Aclosed) -->
-![GitHub Issues Closed](https://img.shields.io/github/issues-closed/RAV-Organization/SE_Project1_Wolftrack)
-
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/RAV-Organization/SE_Project1_Wolftrack)](https://github.com/RAV-Organization/SE_Project1_Wolftrack/pulls)
+[![GitHub repo size](https://img.shields.io/github/repo-size/RAV-Organization/SE_Project1_Wolftrack)](https://github.com/RAV-Organization/SE_Project1_Wolftrack/tree/wolftrack6.0)
+[![GitHub Issues](https://img.shields.io/github/issues/RAV-Organization/SE_Project1_Wolftrack)](https://github.com/RAV-Organization/SE_Project1_Wolftrack/issues)
+[![GitHub Issues Closed](https://img.shields.io/github/issues-closed/RAV-Organization/SE_Project1_Wolftrack)](https://github.com/RAV-Organization/SE_Project1_Wolftrack/issues?q=is%3Aissue+is%3Aclosed)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 
 
-## Getting Started & Installation:
+<h2> Getting Started & Installation</h2> 
 
-- ### Prerequisite:
+- ### Prerequisite -
 
   - Download [Python3.x](https://www.python.org/downloads/).
 
-- ### Installation:
+- ### Installation -
 
   E.g If you downloaded `Python 3.8.7` above, then
 
   **Steps to setup virtual environment**
 
-  - Create a virtual environment:
+  - Create a virtual environment -
 
     `python3.8 -m venv test_env`
 
-  - Activate the virtual environment:
+  - Activate the virtual environment -
 
     `source test_env/bin/activate`
 
-  - Build the virtual environment:(must be present in [project root directory](https://github.com/rutuja-39/WolfTrack5.0))
+  - Build the virtual environment - (must be present in [project root directory](https://github.com/rutuja-39/WolfTrack5.0))
 
     `pip install -r requirements.txt`
 
 - ### Run Instructions
 
-  **To run/test the site locally:**
+  **To run/test the site locally -**
 
   - Clone
 
   - Navigate to project directory.
 
-  - Run `python main.py` or `python3 main.py` <br> <br>
+  - Run `python app.py` or `python3 app.py` <br> <br>
     If there is a certificate error coming up for nltk stopwords download: <br>
 
     - search for "Install Certificates.command" in finder and open it. Its a script that will install required Certificates. <br>
@@ -67,47 +55,49 @@ Ananya Doshi, Riya Bihani, Vansh Dodiya
   - Site will be hosted at:
     `http://127.0.0.1:5000/`
 
-## Roadmap
-
-### About WolfTrack 6.0:
+<h2> About WolfTrack 6.0 </h2>
 
 Wolftrack6.0 is an online platform for the easy and efficient organization in your pursuit of internships and full-time job opportunities. This platform allows you to expedite your application process and track every step of your career path. It provides features to help manage job applications, deadlines and important documents (resumes). WolfTrack6.0 is your ticket to success, guiding you through the twisting paths of employment prospects with ease. This platform was created with the intention of helping anyone looking for a job or an internship. It may be a college student in any year, a working professional looking to switch or even someone trying to go into an industry for the first time. It appeals to a diverse audience, and its basic yet strong features make it beneficial to everyone.
 
-### About WolfTrack 5.0:
+### NEW Features added -
+1. Interview Preparation Resources Tab - WolfTrack 6.0 offers an entire webpage, providing access to comprehensive details about interview preparation. It provides links redirecting to important websites, crash courses and demo tutorials/videos for important concepts based on various job positions.
 
-1. Centralized Job Application Management
-   It centralizes all job application information, including deadlines, statuses, and documents, into a single, user-friendly dashboard. This eliminates the need to rely on various tools such as spreadsheets, email threads and notebooks. This makes the process more organized and less stressful.
+2. Salary Insights and Comparisons - The website provides a separate page to view statistical data about job salaries based on factors such as locations and job roles. This provides analysis about jobs and helps users to filter out jobs of their preferences, allowing them to make optimal decisions. Statistical analysis is provided through graphs and plots.
 
-2. Built-in Deadline Alerts
-   Previously, users risked missing important deadlines without a reminder system to tell them of application dates and deadlines. With built-in alert mechanisms, it ensures users never miss application deadlines, providing peace of mind and reducing the chances of missing opportunities.
+3. Online Job Search - This new version of the portal offers real time updated information by scrapping jobs from Internet based on job roles and location. This will help users to get live updates about job postings and give them option to view job description and click on links provided to apply to jobs of their choices.
 
-3. Streamlined Resume Upload and Download
-   Some job applications may require different versions of resumes and managing as well as sharing them with potential employers could be difficult and hard to track. WolfTrack 5.0 allows users to upload, download, and store multiple versions of their resume seamlessly. This ensures that resumes are easily accessible and up-to-date.
+### Future Scope -
 
-4. Comprehensive CRUD Operations for Applications
-   WolfTrack 5.0 offers full CRUD (Create, Read, Update, Delete) functionality, allowing users to easily add new applications, update statuses, and remove old or irrelevant entries. This elimates the need to manually manage applications with no structured way to edit, update, or delete job application records.
+1. Sending reminders through SMS notifications and/or emails.
+2. Resume Template Editor.
+3. Bookmarking liked jobs.
+4. Recommendation system for Jobs
 
-5. Enhanced User Experience with Filter by Status Feature
-   The "Filter by Status" feature allows users to view applications based on their progress (e.g., applied, in process, offer received). This makes it much easier to focus on priority tasks and manage multiple applications efficiently.
+<h2>Demo Videos</h2>
+<h3>Demo of WolfTrack5.0 (the previous version)</h3>
+https://drive.google.com/file/d/1-4nKjXZJjtip131K_Etm1zGsyzA6oJLD/view?usp=drive_link
 
-### Future Scope
+<h3>Demo of Wolftrack6.0 (the new version)</h3>
+https://drive.google.com/file/d/1cbDKmmY6uZT0tWzlLSz5iJ6KqpzHHIMy/view?usp=drive_link
 
-1. Web Scrapping for recommended jobs
+<h2>Built with</h2>
 
-- Utilize Python libraries like BeautifulSoup and Selenium to scrape job postings from websites like LinkedIn, Indeed, Glassdoor, etc.
+1. Python
+2. HTML
+3. CSS
+4. JavaScript
+5. Flask
+6. SQLite
 
-2. Send reminders through SMS notification.
+<h2>Contributing</h2>
+Are you interested in contributing to this project? Visit our contribution documentation for details.
 
-- Include an option of providing contact number to receive SMS notifications based on interview dates and job deadlines.
+Need some ideas on what has been done? Jump on over to our development project board for specific issues we are tracking and log which areas you are planning to help out on.
 
-3. Interview preparation resources tab.
+This project is made possible by the incredible donation of time from NC State Project Contributors and the advice/support of CSC 510 teaching staff. NC State University has made the resources for this project possible, and will continue to support CSC 510 projects for the forseeable future.
 
-- Include a detailed tab for interview preparation resources including behavioural questions and questions tailored to specific roles.
+<h2>Help</h2>
+Our primary method for addressing bugs and feature requests should be through submitting an issue ticket in the "Issues" tab.
 
-4. Salary insights and comparisons.
-
-- Use visualization libraries to show salaries for different roles based on factors like locations, job roles, years of experience.
-
-5. Resume template editor.
-
-- Provides users with an option to directly edit and make changes in their resume on the website.
+<h2>License</h2>
+Distributed under the MIT License. See LICENSE for more information.
